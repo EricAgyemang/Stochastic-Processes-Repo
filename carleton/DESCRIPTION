@@ -1,0 +1,12 @@
+Package: carleton
+Type: Package
+Title: Carleton College
+Version: 1.0.1
+Date: 2013-10-22
+Author: Laura Chihara
+Maintainer: Laura Chihara <lchihara@carleton.edu>
+Description: Functions for introductory statistics classes at Carleton College
+LazyData: TRUE
+Suggests: MASS
+License: GPL-2
+Packaged: 2013-10-22 15:56:28 UTC; Laura

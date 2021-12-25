@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 2002-2 (1.70)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>R lab 2 solution</title>
+<meta name="description" content="R lab 2 solution">
+<meta name="keywords" content="RLab2sol">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+
+<meta name="Generator" content="LaTeX2HTML v2002-2">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="STYLESHEET" href="R%20lab%202%20solution_files/RLab2sol.css">
+
+</head>
+
+<body>
+
+<p>
+</p><div align="CENTER">
+<font size="+2"><b>R Lab Session : Part 2</b>
+<br>(Solutions)
+
+</font></div>
+<p>
+To see a review of how to start R, look at the beginning of
+<a name="tex2html1" href="http://www-stat.stanford.edu/~epurdom/RLab.htm">Lab1</a>
+<br>
+Lab1 http://www-stat.stanford.edu/&nbsp;epurdom/RLab.htm
+
+</p><p>
+</p><div align="CENTER">
+<font size="+2"><u><b>Probability Calculations</b></u>
+
+</font></div>
+
+<p>
+The following examples demonstrate how to calculate the value of the
+cumulative distribution function at (or the probability to the left
+of) a given number.
+
+</p><p>
+</p><ul>
+<li><b>Normal(0,1) Distribution :</b>
+
+<p>
+</p><pre>    &gt; x &lt;- c(-2,-1,0,1,2)
+    &gt; x
+    [1] -2 -1  0  1  2
+    &gt; pnorm(x)
+    [1] 0.02275013 0.15865525 0.50000000 0.84134475 0.97724987
+</pre>
+</li>
+<li><b>Binomial(<img src="R%20lab%202%20solution_files/img1.png" alt="$n$" width="16" height="16" border="0" align="BOTTOM">,<img src="R%20lab%202%20solution_files/img2.png" alt="$p$" width="14" height="33" border="0" align="MIDDLE">) Distribution :</b>
+
+<p>
+</p><pre>    &gt; x &lt;- c(0,1,2,5,8,10,15,20)
+    &gt; pbinom(x,size=20,prob=.2)
+    [1] 0.01152922 0.06917529 0.20608472 0.80420779 0.99001821 0.99943659 0.99999999
+    [8] 1.00000000
+</pre>
+</li>
+<li><b>Poisson(<img src="R%20lab%202%20solution_files/img3.png" alt="$\lambda$" width="16" height="18" border="0" align="BOTTOM">) Distribution :</b>
+
+<p>
+</p><pre>    &gt; x &lt;- c(0,1,2,5,8,10,15,20)
+    &gt; ppois(x,6)
+    [1] 0.002478752 0.017351265 0.061968804 0.445679641 0.847237494 0.957379076
+    [7] 0.999490902 0.999998545
+</pre>
+</li>
+</ul>
+
+<p>
+
+<b>Exercise :</b> Calculate the following probabilities :
+</p><dl compact="compact">
+<dt>1.</dt>
+<dd>Probability that a normal random variable with mean 22 and 
+  variance 25
+  <dl compact="compact">
+<dt>(i)</dt>
+<dd>lies between 16.2 and 27.5
+<br><font color="#ff0000"><tt>pnorm(27.5,22,sd=5)-pnorm(16.2,22,sd=5)</tt></font>
+<br><font color="#ff0000"><tt>[1] 0.7413095</tt></font>  
+</dd>
+<dt>(ii)</dt>
+<dd>is greater than 29
+<font color="#ff0000"><tt>1-pnorm(29,22,sd=5)</tt></font>
+<br><font color="#ff0000"><tt>[1] 0.08075666</tt></font>  
+</dd>
+<dt>(iii)</dt>
+<dd>is less than 17
+<font color="#ff0000"><tt>pnorm(17,22,sd=5)</tt></font>
+<br><font color="#ff0000"><tt>[1] 0.1586553</tt></font>  
+</dd>
+<dt>(iv)</dt>
+<dd>is less than 15 or greater than 25
+<font color="#ff0000"><tt>pnorm(15,22,sd=5)+1-pnorm(25,22,sd=5)</tt></font>
+<br><font color="#ff0000"><tt>[1] 0.3550098</tt></font>
+</dd>
+</dl>
+</dd>
+<dt>2.</dt>
+<dd>Probability that in 60 tosses of a fair coin the head comes
+    up
+    <dl compact="compact">
+<dt>(i)</dt>
+<dd>20,25 or 30 times
+<br><font color="#ff0000"><tt>sum(dbinom(c(20,25,30),60,prob=0.5))</tt></font>
+<br><font color="#ff0000">
+[1] 0.1512435</font>
+<br>    
+</dd>
+<dt>(ii)</dt>
+<dd>less than 20 times
+<br><font color="#ff0000"><tt>pbinom(19,60,prob=0.5)</tt></font>
+<br><font color="#ff0000"><tt>[1] 0.0031088</tt></font>    
+</dd>
+<dt>(iii)</dt>
+<dd>between 20 and 30 times
+<font color="#ff0000"><tt>pbinom(30,60,prob=0.5)-pbinom(20,60,prob=0.5)</tt></font>
+<br><font color="#ff0000"><tt>[1] 0.5445444</tt></font>
+</dd>
+</dl>
+</dd>
+<dt>3.</dt>
+<dd>A random variable X has Poisson distribution with mean
+    7. Find the probability that 
+    <dl compact="compact">
+<dt>(i)</dt>
+<dd>X is less than 5
+<font color="#ff0000"><tt>less or equal is:
+<br>&gt; ppois(5,7)
+<br>[1]0.3007083
+<br>
+less than is
+<br>&gt; ppois(4,7)
+<br>[1]0.1729916</tt></font>    
+</dd>
+<dt>(ii)</dt>
+<dd>X is greater than 10 (strictly)
+<br><font color="#ff0000"><tt>
+&gt; 1-ppois(10,7)
+[1] 0.0985208
+</tt></font>    
+</dd>
+<dt>(iii)</dt>
+<dd>X is between 4 and 16
+<font color="#ff0000"><tt>
+&gt; ppois(16,7)-ppois(3,7)
+[1] 0.9172764
+</tt></font>
+</dd>
+</dl>
+</dd>
+</dl>
+
+<p>
+</p><div align="CENTER">
+<font size="+2"><u><b>Quantiles</b></u>
+
+</font></div>
+<p>
+The following examples show how to common the quantiles of some 
+common distributions for a given probability (or a number between
+0 and 1).
+
+</p><p>
+</p><ul>
+<li><b>Normal(0,1) Distribution :</b>
+
+<p>
+</p><pre>    &gt; y &lt;- c(.01,.05,.1,.2,.5,.8,.95,.99)
+    &gt; qnorm(y,mean=0,sd=1)
+    [1] -2.3263479 -1.6448536 -1.2815516 -0.8416212  0.0000000 0.8416212  1.6448536
+    [8]  2.3263479
+</pre>
+</li>
+<li><b>Binomial(<img src="R%20lab%202%20solution_files/img4.png" alt="$n$" width="16" height="16" border="0" align="BOTTOM">,<img src="R%20lab%202%20solution_files/img5.png" alt="$p$" width="14" height="33" border="0" align="MIDDLE">) Distribution :</b>
+
+<p>
+</p><pre>    &gt; y &lt;- c(.01,.05,.1,.2,.5,.8,.95,.99)
+    &gt; qbinom(y,size=30,prob=.2)
+    [1]  1  3  3  4  6  8 10 11
+</pre>
+</li>
+<li><b>Poisson(<img src="R%20lab%202%20solution_files/img6.png" alt="$\lambda$" width="16" height="18" border="0" align="BOTTOM">) Distribution :</b>
+
+<p>
+</p><pre>    &gt; y &lt;- c(.01,.05,.1,.2,.5,.8,.95,.99)
+    &gt; qpois(y,6)
+    [1]  1  2  3  4  6  8 10 12
+</pre>
+</li>
+</ul>
+
+<p>
+</p><div align="CENTER">
+<font size="+2"><u><b>Random Variable generation</b></u>
+
+</font></div>
+<p>
+The following examples illustrate how to generate random samples from
+some of the well-known probability distributions.  
+
+</p><p>
+</p><ul>
+<li><b>Normal(<img src="R%20lab%202%20solution_files/img7.png" alt="$\mu$" width="16" height="33" border="0" align="MIDDLE">,<img src="R%20lab%202%20solution_files/img8.png" alt="$\sigma^2$" width="24" height="19" border="0" align="BOTTOM">) Distribution :</b>
+
+<p>
+The first sample is from <img src="R%20lab%202%20solution_files/img9.png" alt="$N(0,1)$" width="63" height="37" border="0" align="MIDDLE"> distribution and the next one from
+<img src="R%20lab%202%20solution_files/img10.png" alt="$N(5,1)$" width="63" height="37" border="0" align="MIDDLE"> distribution.
+
+</p><p>
+</p><pre>    &gt; z &lt;- rnorm(10) 
+    &gt; z
+    [1] -0.90361592 -1.96522764 -1.35107949 -0.10846423 0.29756634  1.40831606
+    [7] -0.07844737  1.40575257 -0.97511415 -0.33418299
+</pre>
+If you would like to see how the distribution of the sample points looks like ....
+<pre>    &gt; w &lt;- rnorm(1000,mean=5,sd=1)
+    &gt; hist(w)
+</pre>
+</li>
+<li><b>Binomial(<img src="R%20lab%202%20solution_files/img11.png" alt="$n$" width="16" height="16" border="0" align="BOTTOM">,<img src="R%20lab%202%20solution_files/img12.png" alt="$p$" width="14" height="33" border="0" align="MIDDLE">) Distribution :</b>
+
+<p>
+</p><pre>     &gt; k &lt;- rbinom(20,size=5,prob=.2)
+     &gt; k
+     [1] 1 2 0 1 0 0 0 2 0 1 0 0 0 0 0 2 4 1 1 1
+</pre>
+</li>
+<li><b>Poisson(<img src="R%20lab%202%20solution_files/img13.png" alt="$\lambda$" width="16" height="18" border="0" align="BOTTOM">) Distribution :</b>
+
+<p>
+</p><pre>     &gt; x &lt;- rpois(20,6)
+     &gt; x
+     [1]  2  8  7  5  5  5  3  8  5  5  1  8  5  5  5  4 10  7  3  4
+</pre>
+</li>
+</ul>
+
+<p>
+
+<b>Exercise (Advanced) :</b> Generate 500 samples from Student's <img src="R%20lab%202%20solution_files/img14.png" alt="$t$" width="11" height="16" border="0" align="BOTTOM"> distribution
+with 5 degrees of freedom and plot the historgam. (Note: <img src="R%20lab%202%20solution_files/img15.png" alt="$t$" width="11" height="16" border="0" align="BOTTOM">
+distribution is going to be covered in class). The corresponding
+function is <b>rt </b>.
+<font color="#ff0000"><tt>
+ hist(rt(500,5),40)
+</tt></font>
+</p><div align="CENTER">
+<font size="+2"><u><b>Density Plots</b></u>
+
+</font></div>
+<p>
+
+</p><ul>
+<li><b>Plotting the probability density function (pdf)
+      of a Normal distribution :</b>
+
+<p>
+</p><pre>    &gt; x11()
+    &gt; x &lt;- seq(-4.5,4.5,.1)
+    &gt; normdensity &lt;- dnorm(x,mean=0,sd=1)
+    &gt; plot(x,normdensity,type="l")
+</pre>
+</li>
+<li><b>Plotting the probablity mass function (pmf) of a Binomial
+      distribution :</b>
+
+<p>
+</p><pre>    &gt; par(mfrow=c(2,1))
+    &gt; k &lt;- c(1:30)
+    &gt; plot(k,dbinom(k,size=30,prob=.15),type="h")
+    &gt; plot(k,dbinom(k,size=30,prob=.4),type="h")
+    &gt; par(mfrow=c(1,1))
+</pre>
+
+<p>
+</p></li>
+<li><b>Discrete Probabilities</b> For a discrete random variable, you can use the probability mass to find <img src="R%20lab%202%20solution_files/img16.png" alt="$P(X=k)$" width="86" height="37" border="0" align="MIDDLE">
+<pre>    &gt; dbinom(3,size=10,prob=0.5)
+    [1] 0.1171875
+</pre>
+
+<p>
+</p></li>
+</ul>
+
+<p>
+** Note the distinction between the continuous (Normal)
+and the discrete (Binomial) distrubtions.
+
+</p><p>
+
+<u><b>Exercise :</b></u> Plot the probability mass functions for the 
+Poisson distribution with mean 4.5 and 12 respectively. Do you see any
+similarity of these plots to any of the plots above? If so, can you
+guess why ? 
+
+</p><p>
+<u><b>Exercise :</b></u> Recreate the probabilities that Professor 
+Holmes did in class (Bin(5,.4)) [You can do it in 1 command!] How would 
+you get the expected counts?
+
+</p><p>
+</p><div align="CENTER">
+<font size="+2"><u><b>Q-Q plot</b></u>
+
+</font></div>
+<p>
+<b>R</b> has two different functions that can be used for generating a
+Q-Q plot. Use the function <b>qqnorm</b> for plotting sample quantiles
+against theoretical (population) quantiles of standard normal random variable.
+
+</p><p>
+
+<u><b>Example :</b></u>
+</p><pre>    &gt; stdnormsamp &lt;-rnorm(100,mean=0,sd=1)
+    &gt; normsamp &lt;- rnorm(100,mean=5,sd=1)
+    &gt; binomsamp &lt;-rbinom(100,size=20,prob=.25)
+    &gt; poissamp &lt;- rpois(100,5)
+
+    &gt; par(mfrow=c(2,2))
+
+    &gt; qqnorm(stdnormsamp,main="Normal Q-Q plot : N(0,1) samples")
+    &gt; qqline(stdnormsamp,col=2)
+    &gt; qqnorm(normsamp,main="Normal Q-Q plot : N(5,1) samples")
+    &gt; qqline(normsamp,col=2)
+    &gt; qqnorm(binomsamp,main="Normal Q-Q plot : Bin(20,.25) samples")
+    &gt; qqline(binomsamp,col=2)
+    &gt; qqnorm(poissamp,main="Normal Q-Q plot : Poisson(5) samples")
+    &gt; qqline(poissamp,col=2)
+</pre>
+
+<p>
+
+<b>Note:</b> Systematic departure of points from the Q-Q line (the red
+straight line in the plots) would indicate some type of departure from
+normality for the sample points. 
+
+</p><p>
+</p><p>
+Use of function <b>qqplot</b> for plotting sample quantiles for one
+sample against the sample quantiles of another sample
+
+</p><p>
+
+<u><b>Example :</b></u>
+</p><pre>    &gt; par(mfrow=c(2,1))
+
+    &gt; qqplot(stdnormsamp,normsamp,xlab = "Sample quantiles : N(0,1) samples",
+    + ylab = "Sample quantiles : N(5,1) samples")
+    &gt; qqplot(stdnormsamp,binomsamp,xlab = "Sample quantiles : N(0,1) samples",
+    + ylab = "Sample quantiles : Bin(20,.25) samples")
+</pre>
+
+<p>
+
+<b>Exercise :</b> Generate 100 samples from Student's <img src="R%20lab%202%20solution_files/img17.png" alt="$t$" width="11" height="16" border="0" align="BOTTOM"> distribution
+with 4 degrees of freedom and generate the qqplot for this
+sample.
+<br><font color="#ff0000"><tt>
+qqnorm(rt(100,df=4))</tt></font>Generate another sample of same size, but now from a <img src="R%20lab%202%20solution_files/img18.png" alt="$t$" width="11" height="16" border="0" align="BOTTOM">
+distribution with 30 degrees of freedom and generate the q-q plot. 
+Do you see any difference ?  
+
+<br><font color="#ff0000"><tt>
+qqnorm(rt(100,df=30))</tt></font>
+</p><p>
+It should be evident to you that the t distribution is very far from
+normal, and the 30 degrees of freedom t is indistinguishable from Normal.
+<br></p><hr>
+<address>
+Susan Holmes
+2004-10-31
+</address>
+
+
+</body></html>

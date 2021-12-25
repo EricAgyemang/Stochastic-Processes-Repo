@@ -1,0 +1,13 @@
+#exportPattern("^[[:alpha:]]+")
+
+export(anovaSummarized, boot, bootCor, bootPaired, corDemo, confIntDemo, groupedBar,
+missingLevel, permTest, permTestCor, permTestPaired, qqPlotDemo, stemPlot)
+
+S3method(boot, default)
+S3method(boot, formula)
+S3method(groupedBar, default)
+S3method(groupedBar, formula)
+S3method(permTest, default)
+S3method(permTest, formula)
+S3method(stemPlot, default)
+S3method(stemPlot, formula)
