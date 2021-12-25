@@ -2,7 +2,7 @@
 A stokhazesthai (stochastic) process, also called a random process, is one in which outcomes are uncertain  (MAT 455, ISU). 
 
 In its most general expression, a stochastic process is simply a collection of random variables *{X<sub>t</sup>, t ∈ I}*. The index t often represents time, 
-and the set *I* is the index set of the process. The most common index sets are *I = {0, 1, 2,…}*, representing discrete time, and **I = [0, ∞)**, representing
+and the set *I* is the index set of the process. The most common index sets are *I = {0, 1, 2,…}*, representing discrete time, and *I = [0, ∞)*, representing
 continuous time. Discrete-time stochastic processes are sequences of random variables. Continuous-time processes are uncountable collections of random variables.
 The random variables of a stochastic process take values in a common state space *S*, either discrete or continuous. A stochastic process is specified by
 its index and state spaces, and by the dependency relations among its random
