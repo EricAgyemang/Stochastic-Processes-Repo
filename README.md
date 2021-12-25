@@ -19,7 +19,7 @@ The dynamics of a stochastic process are described by random variables and proba
 can say with certainty how many bacteria are present after t minutes.
 
        
-    *NOTE:* 
+    NOTE:
         For the stochastic model, questions of interest might include:
         • What is the average number of bacteria present at time t?
         • What is the probability that the number of bacteria will exceed some threshold after t minutes?
