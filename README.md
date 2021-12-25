@@ -2,7 +2,7 @@
 A stokhazesthai (stochastic) process, also called a random process, is one in which outcomes are uncertain  (MAT 455, ISU). 
 
 In its most general expression, a stochastic process is simply a collection of random variables *{Xt, t ∈ I}*. The index t often represents time, 
-and the set I is the index set of the process. The most common index sets are *I = {0, 1, 2,…}*, representing discrete time, and *I = [0, ∞)*, representing
+and the set I is the index set of the process. The most common index sets are *I = {0, 1, 2,…}*, representing discrete time, and **I = [0, ∞)**, representing
 continuous time. Discrete-time stochastic processes are sequences of random variables. Continuous-time processes are uncountable collections of random variables.
 The random variables of a stochastic process take values in a common state space *S*, either discrete or continuous. A stochastic process is specified by
 its index and state spaces, and by the dependency relations among its random
@@ -27,4 +27,4 @@ can say with certainty how many bacteria are present after t minutes.
 A Poisson process is a special type of counting process. Given a stream of events that arrive at random times starting at *t = 0*, let Nt denote 
 the number of arrivals that occur by time *t*, that is, the number of events in *[0, t]*. For instance, Nt might be the number of text messages received 
 up to time *t*. For each *t ≥ 0*, Nt is a random variable. The collection of random variables *(Nt)t≥0* is a continuous-time, integer-valued stochastic process,
-called a counting process. Since *N_t* counts events in *[0, t]*, as t increases, the number of events Nt increases.
+called a counting process. Since *N<sub>t</sup>* counts events in *[0, t]*, as t increases, the number of events Nt increases.
